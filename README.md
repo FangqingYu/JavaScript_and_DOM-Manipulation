@@ -12,9 +12,14 @@ Using avaScript, HTML, and CSS, and D3
 
 The code allows users to filter the data table for specific values based on any subsets of categories 
 
+The entire dataset is displayed on webpage by default 
 
-* index.html -   HTML web page that displays the data
-* static/js/app.js -  Javascript code that filters and returns data based on user input(s)
+When no inputs are received, the filters return the entire dataset
+
+
+
+* index.html -    HTML web page that displays the data
+* static/js/app.js -   Javascript code that filters and returns data based on user input(s)
 
 ## Multiple Search Categories 
 
