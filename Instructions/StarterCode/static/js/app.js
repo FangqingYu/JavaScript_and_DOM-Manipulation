@@ -21,43 +21,71 @@ submit.on("click", function() {
 
   // Select the input element and get the raw HTML node
   // date input
-  var inputElement1 = d3.select("#datetime");
-  // city input
-  var inputElement2 = d3.select("#city");
+  var keys = ['datetime', 'country', 'city', 'shape']
+  var dom_keys = keys.map(x => "#".concat(x))
+  //var dom_keys = ['#datetime', '#country', '#city', '#shape']
+  var elements = dom_keys.map(x => d3.select(x))
+  var inputs = elements.map(x => x.property("value"))
+  // var inputElement1 = d3.select("#datetime");
+  // // country input
+  // var inputElement2 = d3.select("#country");
+  // // city input
+  // var inputElement3 = d3.select("#city");
+  // // shape input
+  // var inputElement4 = d3.select("#shape");
 
-  // Get the value property of the input element
-  var inputValue1 = inputElement1.property("value");
-  var inputValue2 = inputElement2.property("value");
+  // // Get the value property of the input element
+  // var inputValue1 = inputElement1.property("value");
+  // var inputValue2 = inputElement2.property("value");
+  // var inputValue3 = inputElement3.property("value");
+  // var inputValue4 = inputElement4.property("value");
 
-  console.log(inputValue1);
-  console.log(inputValue2);
-  //console.log(tableData);
+  // console.log(inputValue1);
+  // console.log(inputValue2);
+  // console.log(inputValue3);
+  // console.log(inputValue4);
+  // //console.log(tableData);
 
-  var filteredData = tableData.filter( sighting => {
-
-    // When there is a date input and 
-    if(inputValue1) {
-      // when there is also a city input, return entries that satisfy both condition
-      if(inputValue2) {
-        return sighting.datetime === inputValue1 && sighting.city === inputValue2
-      }
-      // when there is no city input, return entires that satisfy first condition
-      else {
-        return sighting.datetime === inputValue1
-      }
+  // var inputs = [inputValue1, inputValue2, inputValue3, inputValue4]
+  var filteredData = tableData
+  for(var i=0; i < inputs.length; i++){
+    if(inputs[i]){
+      filteredData = filteredData.filter(x => inputs[i] === x[keys[i]])
     }
-    // When there is no date input and
-    else {
-      //when there is a city input, return entries that satisfy the second condition
-      if(inputValue2) {
-        return sighting.city === inputValue2
-      }
-      // When no input are received, return entire dataset
-      else {
-        return sighting
-      }
-    }
-  });
+  }
+  
+  // if(inputValue1){
+  //   filteredData = tableData.filter(x => inputValue1 == x.datetime)
+  // }
+  // if(inputValue2){
+  //   filteredData = filteredData.filter(x => inputValue2 == x.country)
+  // }
+  // var filteredData = tableData.filter(x => inputValue1 == x.datetime)
+  // filteredData = filteredData.filter(x => inputValue2 == x.country)
+  // var filteredData = tableData.filter( sighting => {
+  //   if(inputValue1){
+  //     if(inputValue2){
+  //         if(inputValue3){
+  //             if(inputValue4){
+  //                 return sighting.datetime === inputValue1 && sighting.country === inputValue2 && sighting.city === inputValue3 && sighting.shape === inputValue4;
+  //             }
+  //             else{ 
+  //                 return sighting.datetime === inputValue1 && sighting.country === inputValue2 && sighting.city === inputValue3;
+  //             }
+  
+  //         }
+  //         else {
+  //             return sighting.datetime === inputValue1 && sighting.country === inputValue2;
+  //         }
+  
+  //     }
+  //     else {
+  //         return sighting.datetime === inputValue1;
+  //     }
+  //   }
+  //   else {
+  //     return sighting;
+  //   }
 
   console.log(filteredData);
   
