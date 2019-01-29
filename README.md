@@ -14,9 +14,9 @@ The code allows users to filter the data table for specific values based on any 
 
 
 * index.html -   HTML web page that displays the data
-* static/js/app.js -  Javascript code that filters and return data based on user input(s)
+* static/js/app.js -  Javascript code that filters and returns data based on user input(s)
 
-## Multiple Search Categories (Optional)
+## Multiple Search Categories 
 
 * Using multiple `input` tags and/or select dropdowns, write JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:
 
